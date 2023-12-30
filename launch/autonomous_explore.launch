@@ -1,0 +1,14 @@
+<launch> 
+
+    <!-- robot slam launch file -->
+    <include file="$(find brick_search)/launch/robot_slam.launch"/>
+
+    <!-- move base -->
+    <include file="$(find brick_search)/launch/move_base.launch"/>
+ 
+    <!-- explore lite package -->
+    <node pkg="explore_lite" type="explore" respawn="true" name="explore" output="screen">
+        <rosparam file="$(find brick_search)/param/exploration.yaml" command="load" />
+    </node>
+ 
+</launch>
